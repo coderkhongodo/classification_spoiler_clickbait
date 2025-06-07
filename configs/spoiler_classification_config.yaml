@@ -1,0 +1,102 @@
+# Task 2: SBERT + ML Classification Configuration
+
+# Experiment tracking
+use_wandb: false  # Set to true nếu muốn sử dụng W&B
+wandb_project: "clickbait-spoiler-classification"
+
+# Data paths
+data:
+  train_csv: "data/processed/task2/train_processed.csv"
+  validation_csv: "data/processed/task2/validation_processed.csv"
+  train_embeddings: "data/processed/task2/train_embeddings.pkl"
+  validation_embeddings: "data/processed/task2/validation_embeddings.pkl"
+
+# Features configuration
+features:
+  # Numerical features
+  numerical_features:
+    - "post_length"
+    - "spoiler_length" 
+    - "target_length"
+    - "keywords_count"
+    - "has_description"
+  
+  # Embedding fields (384-dim each)
+  embedding_fields:
+    - "post_text"
+    - "spoiler"
+    - "target_paragraphs"
+    - "target_keywords"
+  
+  # Total feature dimension: 5 numerical + (384 * 4 embeddings) = 1541
+  total_features: 1541
+
+# Model configurations
+models:
+  random_forest:
+    n_estimators: 200
+    max_depth: 20
+    min_samples_split: 5
+    min_samples_leaf: 2
+    max_features: "sqrt"
+    class_weight: "balanced"
+    
+  svm:
+    C: 10.0
+    kernel: "rbf"
+    gamma: "scale"
+    class_weight: "balanced"
+    probability: true
+    
+  logistic_regression:
+    C: 1.0
+    max_iter: 2000
+    class_weight: "balanced"
+    solver: "lbfgs"
+    multi_class: "ovr"
+
+# Training parameters
+training:
+  # Cross-validation
+  cv_folds: 5
+  cv_scoring: "accuracy"
+  cv_random_state: 42
+  
+  # Feature scaling
+  scale_features: true
+  
+  # CPU optimization
+  n_jobs: -1
+
+# Class mapping
+classes:
+  phrase: 0
+  passage: 1
+  multi: 2
+
+# Evaluation configuration
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision_macro"
+    - "recall_macro"
+    - "f1_macro"
+    - "classification_report"
+    - "confusion_matrix"
+    - "roc_auc"
+  
+  # Visualization
+  create_plots: true
+  save_feature_importance: true
+
+# Output paths
+output:
+  models_dir: "models/task2_classification"
+  results_dir: "results/task2_classification"
+  logs_dir: "logs/task2_classification"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  save_to_file: true 

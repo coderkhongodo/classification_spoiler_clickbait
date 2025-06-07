@@ -1,0 +1,36 @@
+# Data Configuration
+data:
+  raw_data_path: "data/raw/"
+  processed_data_path: "data/processed/"
+  splits_path: "data/splits/"
+  
+  # Dataset splits
+  train_size: 3200
+  test_size: 800
+  
+  # Columns used for different tasks
+  spoiler_generation_columns:
+    - "postText"
+    - "targetParagraph"
+    
+  spoiler_classification_columns:
+    - "postText"
+    - "targetParagraph"
+    - "targetTitle"
+    - "targetDescription"
+    - "targetKeywords"
+  
+  # Text preprocessing
+  preprocessing:
+    max_length: 512
+    truncation: true
+    padding: true
+    remove_html: true
+    lowercase: false
+    remove_special_chars: false
+
+# Spoiler types
+spoiler_types:
+  - "phrase"
+  - "passage"
+  - "multipart" 

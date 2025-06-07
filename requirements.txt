@@ -1,0 +1,32 @@
+# Deep Learning và Transformers
+torch>=1.13.0
+transformers>=4.21.0
+datasets>=2.8.0
+accelerate>=0.15.0
+
+# Text Processing và NLP
+nltk>=3.8
+spacy>=3.4.0
+sentence-transformers>=2.2.0
+
+# Machine Learning
+scikit-learn>=1.2.0
+numpy>=1.23.0
+pandas>=1.5.0
+
+# Evaluation Metrics
+rouge-score>=0.1.2
+nltk>=3.8
+bert-score>=0.3.12
+sacrebleu>=2.3.0
+
+# Utilities
+tqdm>=4.64.0
+wandb>=0.13.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+PyYAML>=6.0
+
+# Jupyter
+jupyter>=1.0.0
+ipykernel>=6.19.0 

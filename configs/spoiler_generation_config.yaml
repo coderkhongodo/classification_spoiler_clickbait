@@ -1,0 +1,67 @@
+# Spoiler Generation Configuration (GPT-2 Medium)
+model:
+  name: "gpt2-medium"
+  model_name_or_path: "gpt2-medium"
+  
+  # Model parameters
+  vocab_size: 50257
+  n_positions: 1024
+  n_ctx: 1024
+  n_embd: 1024
+  n_layer: 24
+  n_head: 16
+
+# Training parameters
+training:
+  learning_rate: 5e-5
+  batch_size: 8
+  gradient_accumulation_steps: 4
+  num_epochs: 5
+  warmup_steps: 500
+  weight_decay: 0.01
+  
+  # Loss function
+  loss_function: "sparse_categorical_crossentropy"
+  
+  # Optimizer
+  optimizer: "AdamW"
+  
+  # Scheduler
+  scheduler: "linear"
+  
+  # Evaluation
+  evaluation_steps: 500
+  save_steps: 1000
+  logging_steps: 100
+
+# Generation parameters
+generation:
+  max_length: 128
+  min_length: 10
+  num_beams: 4
+  do_sample: true
+  temperature: 0.8
+  top_p: 0.9
+  top_k: 50
+  repetition_penalty: 1.1
+  length_penalty: 1.0
+
+# Data processing
+tokenization:
+  max_input_length: 512
+  max_target_length: 128
+  truncation: true
+  padding: "max_length"
+  
+# Evaluation metrics
+evaluation_metrics:
+  - "bleu"
+  - "rouge"
+  - "bertscore"
+  - "meteor"
+
+# Paths
+paths:
+  model_save_path: "models/spoiler_generator/"
+  logs_path: "logs/spoiler_generation/"
+  results_path: "results/spoiler_generation/" 
