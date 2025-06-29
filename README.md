@@ -264,20 +264,6 @@ This project serves educational purposes. Extension ideas:
    - CI/CD pipeline
    - Model versioning with MLflow
 
-## 📝 **Citation**
-
-```bibtex
-@software{clickbait_spoiler_2024,
-  title={Clickbait Spoiler Classification using SBERT and Machine Learning},
-  author={Huỳnh Lý Tân Khoa},
-  year={2024},
-  url={https://github.com/coderkhongodo/NLP_CB_prj},
-  note={Educational Research Project - SVM Model achieves 85.5\% accuracy}
-}
-```
-
----
-
 ## 📞 **Contact & Links**
 
 - **👨‍💻 Author**: Huỳnh Lý Tân Khoa
