@@ -6,9 +6,9 @@
 [![Status](https://img.shields.io/badge/Task%202-Completed%20✅-success.svg)](README.md)
 [![Accuracy](https://img.shields.io/badge/Best%20Model-SVM%2085.5%25-brightgreen.svg)](README.md)
 
-> **Dự án nghiên cứu về phân loại spoiler clickbait sử dụng SBERT + Machine Learning với kết quả **SVM đạt 85.5% accuracy**.
+> **A research project on clickbait spoiler classification using SBERT + Machine Learning achieving **SVM 85.5% accuracy**.
 
-## 📊 **Kết quả chính đã đạt được**
+## 📊 **Key Results Achieved**
 
 | Metric | Random Forest | **SVM (Best)** | Logistic Regression |
 |--------|---------------|----------------|-------------------|
@@ -16,56 +16,56 @@
 | **F1-Macro** | 0.6713 | **🏆 0.8152** | 0.7873 |
 | **Status** | ✅ Completed | ✅ **Production Ready** | ✅ Completed |
 
-## 🎯 **Mục đích nghiên cứu và kiến thức đạt được**
+## 🎯 **Research Purpose and Knowledge Gained**
 
-### 📚 Nguồn tham khảo
-Nghiên cứu dựa trên bài báo khoa học:
+### 📚 Reference Paper
+Research based on the scientific paper:
 **"A deep learning framework for clickbait spoiler generation and type identification"**  
-*Tác giả: Itishree Panda, Jyoti Prakash Singh, Gayadhar Pradhan, Khushi Kumari*
+*Authors: Itishree Panda, Jyoti Prakash Singh, Gayadhar Pradhan, Khushi Kumari*
 
-### 🎓 Mục đích học tập
-Đây là **bài nghiên cứu học tập** được thực hiện lại để:
+### 🎓 Educational Purpose
+This is an **educational research project** reimplemented to:
 
-1. **🔬 Nghiên cứu NLP hiện đại**
-   - Kiến trúc Transformer và sentence embeddings (SBERT)
-   - Feature engineering kết hợp numerical + embeddings
-   - Multi-class text classification với imbalanced data
+1. **🔬 Study Modern NLP**
+   - Transformer architecture and sentence embeddings (SBERT)
+   - Feature engineering combining numerical + embeddings
+   - Multi-class text classification with imbalanced data
 
-2. **📰 Nghiên cứu vấn đề clickbait**
-   - Phân tích 3 loại spoiler: phrase (42.7%), passage (39.8%), multi (17.5%)
-   - Hiểu tác động xã hội và phương pháp tự động phân loại
+2. **📰 Research Clickbait Problem**
+   - Analyze 3 spoiler types: phrase (42.7%), passage (39.8%), multi (17.5%)
+   - Understand social impact and automated classification methods
 
-3. **🤖 Phát triển kỹ năng ML**
-   - End-to-end ML pipeline từ preprocessing → evaluation
+3. **🤖 Develop ML Skills**
+   - End-to-end ML pipeline from preprocessing → evaluation
    - Cross-validation, hyperparameter tuning, model comparison
    - Advanced metrics: ROC-AUC, confusion matrices, error analysis
 
-4. **💻 Kỹ thuật thực hành**
-   - Xử lý dữ liệu văn bản quy mô lớn (4,000 samples)
+4. **💻 Technical Practice**
+   - Large-scale text data processing (4,000 samples)
    - Unicode cleaning, tokenization, embedding generation
-   - Data visualization và comprehensive reporting
+   - Data visualization and comprehensive reporting
 
-### ⚠️ **Tuyên bố mục đích**
-**🎓 QUAN TRỌNG**: Nghiên cứu này **chỉ phục vụ mục đích học tập và nghiên cứu khoa học**.
+### ⚠️ **Purpose Disclaimer**
+**🎓 IMPORTANT**: This research is conducted **solely for educational and scientific purposes**.
 
-- ❌ **Không có mục đích thương mại**
-- ❌ **Không tạo clickbait có hại**
-- ✅ **Mục tiêu**: Học tập NLP và hiểu vấn đề xã hội
-- ✅ **Ứng dụng**: Nghiên cứu học thuật, giáo dục, phát triển kỹ năng
+- ❌ **No commercial intent**
+- ❌ **Not for creating harmful clickbait**
+- ✅ **Goal**: Learn NLP and understand social issues
+- ✅ **Applications**: Academic research, education, skill development
 
-## 📋 **Tổng quan nghiên cứu**
+## 📋 **Research Overview**
 
-### 📊 Bộ dữ liệu
-- **📁 Nguồn**: SemEval-2023 Clickbait Spoiler dataset từ Zenodo
-- **📏 Kích thước**: 4,000 bài đăng clickbait (3,200 train + 800 validation)
-- **🏷️ Loại spoiler**:
+### 📊 Dataset
+- **📁 Source**: SemEval-2023 Clickbait Spoiler dataset from Zenodo
+- **📏 Size**: 4,000 clickbait posts (3,200 train + 800 validation)
+- **🏷️ Spoiler Types**:
   ```
-  📝 phrase  (42.7%): Cụm từ ngắn
-  📄 passage (39.8%): Đoạn văn bản  
-  🔗 multi   (17.5%): Nhiều phần riêng biệt
+  📝 phrase  (42.7%): Short phrases
+  📄 passage (39.8%): Text passages  
+  🔗 multi   (17.5%): Multiple separate parts
   ```
 
-### 🏆 **Task 2: Phân loại spoiler (✅ Hoàn thành)**
+### 🏆 **Task 2: Spoiler Classification (✅ Completed)**
 
 #### 🔧 **Architecture**
 ```
@@ -87,18 +87,18 @@ Input Features (1,541 dimensions):
 
 #### 📈 **Evaluation Metrics**
 - ✅ **Accuracy, Precision, Recall, F1-score** (per-class & macro)
-- ✅ **ROC-AUC curves** cho multi-class
-- ✅ **Confusion matrices** với normalization
+- ✅ **ROC-AUC curves** for multi-class
+- ✅ **Confusion matrices** with normalization
 - ✅ **Error analysis** (116 misclassified samples analyzed)
 - ✅ **Feature importance** analysis
 
-### 🚧 **Task 1: Tạo spoiler (Sẽ phát triển)**
-- **🤖 Mô hình**: GPT-2 Medium fine-tuning (planned)
+### 🚧 **Task 1: Spoiler Generation (Future Development)**
+- **🤖 Model**: GPT-2 Medium fine-tuning (planned)
 - **📥 Input**: postText + targetParagraph
 - **📤 Output**: Generated spoiler text
 - **📊 Evaluation**: BLEU, ROUGE, BERTScore, METEOR
 
-## 🗂️ **Cấu trúc Project (Đã tối ưu hóa)**
+## 🗂️ **Project Structure (Optimized)**
 
 ```
 📁 NLP_CB_prj/
@@ -243,10 +243,10 @@ max_length: 512
 
 ## 🤝 **Contributing & Extension Ideas**
 
-Dự án này phục vụ mục đích học tập. Ý tưởng mở rộng:
+This project serves educational purposes. Extension ideas:
 
 1. **🔮 Task 1 Implementation**
-   - GPT-2 Medium fine-tuning cho spoiler generation
+   - GPT-2 Medium fine-tuning for spoiler generation
    - BLEU, ROUGE, BERTScore evaluation
 
 2. **🤖 More ML Models**
@@ -256,13 +256,13 @@ Dự án này phục vụ mục đích học tập. Ý tưởng mở rộng:
 
 3. **📊 Advanced Analysis**
    - A/B testing framework
-   - Bias analysis cho different spoiler types
+   - Bias analysis for different spoiler types
    - Real-time prediction API
 
 4. **🔧 Engineering Improvements**
    - Docker containerization
    - CI/CD pipeline
-   - Model versioning với MLflow
+   - Model versioning with MLflow
 
 ## 📝 **Citation**
 
