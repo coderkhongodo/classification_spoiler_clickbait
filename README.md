@@ -98,7 +98,7 @@ Input Features (1,541 dimensions):
 - **📤 Output**: Generated spoiler text
 - **📊 Evaluation**: BLEU, ROUGE, BERTScore, METEOR
 
-## 🗂️ **Project Structure (Optimized)**
+## 🗂️ **Project Structure**
 
 ```
 📁 NLP_CB_prj/
