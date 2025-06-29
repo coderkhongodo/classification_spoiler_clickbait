@@ -268,7 +268,6 @@ This project serves educational purposes. Extension ideas:
 
 - **👨‍💻 Author**: Huỳnh Lý Tân Khoa
 - **📧 Email**: huynhlytankhoa@gmail.com  
-- **🔗 GitHub**: [coderkhongodo/NLP_CB_prj](https://github.com/coderkhongodo/NLP_CB_prj)
 - **🎯 Purpose**: Educational Research Project
 - **📜 License**: Educational Use Only
 
