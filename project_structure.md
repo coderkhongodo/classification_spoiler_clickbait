@@ -8,59 +8,74 @@ clickbait-spoiler-research/
 ├── data/                           # Thư mục chứa dữ liệu
 │   ├── raw/                        # Dữ liệu thô từ SemEval-2023
 │   ├── processed/                  # Dữ liệu đã xử lý
-│   └── splits/                     # Dữ liệu đã chia train/test
+│   └── cleaned/                    # Dữ liệu đã làm sạch Unicode
 │
-├── src/                            # Mã nguồn chính
-│   ├── data/                       # Xử lý dữ liệu
-│   ├── models/                     # Định nghĩa mô hình
-│   ├── training/                   # Scripts huấn luyện
-│   ├── evaluation/                 # Scripts đánh giá
-│   └── utils/                      # Các utility functions
+├── scripts/                        # Scripts xử lý và thí nghiệm (7 files)
+│   ├── preprocess_data.py          # Tiền xử lý dữ liệu chính
+│   ├── train_classifier.py         # Huấn luyện mô hình phân loại
+│   ├── evaluate_classification.py  # Đánh giá mô hình phân loại
+│   ├── check_system_readiness.py   # Kiểm tra system cho training
+│   ├── clean_unicode_auto.py       # Tự động làm sạch Unicode
+│   ├── create_advanced_visualizations.py  # Tạo visualizations chi tiết
+│   └── analyze_processed_data.py   # Phân tích dữ liệu đã xử lý
 │
-├── configs/                        # File cấu hình
-├── notebooks/                      # Jupyter notebooks để EDA và thử nghiệm
-├── scripts/                        # Scripts chạy thí nghiệm
-├── results/                        # Kết quả thí nghiệm
+├── configs/                        # File cấu hình YAML
+├── results/                        # Kết quả thí nghiệm và visualizations
 ├── models/                         # Mô hình đã huấn luyện
-├── logs/                           # Log files
-└── requirements.txt                # Dependencies
+├── venv/                          # Virtual environment
+├── requirements.txt               # Dependencies
+├── README.md                      # Hướng dẫn project
+├── ENVIRONMENT_GUIDE.md           # Hướng dẫn setup môi trường
+└── .gitignore                     # Git ignore rules
 ```
 
-## Mô tả chi tiết từng thành phần
+## Mô tả chi tiết các Scripts chính
 
-### 1. Data Processing (`src/data/`)
-- `data_loader.py`: Load và parse dữ liệu SemEval-2023
-- `preprocessor.py`: Tiền xử lý văn bản
-- `dataset.py`: Tạo PyTorch Dataset classes
-- `data_splitter.py`: Chia dữ liệu train/test
+### 1. Data Processing & Preprocessing
+- **`preprocess_data.py`**: Script chính cho tiền xử lý dữ liệu
+  - Task 1: Tạo features cho GPT-2 spoiler generation
+  - Task 2: Tạo features + embeddings cho SBERT classification
+  - Tokenization, embedding generation với SBERT
 
-### 2. Models (`src/models/`)
-- `gpt2_spoiler_generator.py`: Mô hình GPT-2 cho tạo spoiler
-- `sbert_classifier.py`: Mô hình SBERT + ML classifiers
-- `base_model.py`: Abstract base class cho các mô hình
+- **`clean_unicode_auto.py`**: Tự động làm sạch ký tự Unicode problematic
+  - Thay thế 36,000+ ký tự Unicode ambiguous
+  - Automatic backup và replacement
 
-### 3. Training (`src/training/`)
-- `spoiler_generator_trainer.py`: Huấn luyện mô hình tạo spoiler
-- `spoiler_classifier_trainer.py`: Huấn luyện mô hình phân loại
-- `trainer_utils.py`: Utility functions cho training
+### 2. Training & Evaluation
+- **`train_classifier.py`**: Huấn luyện mô hình phân loại Task 2
+  - SBERT embeddings + ML classifiers (RF, SVM, LR)
+  - Cross-validation, feature importance analysis
+  - WandB integration cho experiment tracking
 
-### 4. Evaluation (`src/evaluation/`)
-- `generation_metrics.py`: BLEU, ROUGE, BERTScore, METEOR
-- `classification_metrics.py`: Accuracy, Precision, Recall, F1, MCC
-- `evaluator.py`: Main evaluation class
+- **`evaluate_classification.py`**: Đánh giá comprehensive cho Task 2
+  - Multi-model comparison và metrics
+  - Confusion matrices, ROC curves
+  - Error analysis và detailed reports
 
-### 5. Configuration (`configs/`)
-- `spoiler_generation_config.yaml`: Cấu hình cho tạo spoiler
-- `spoiler_classification_config.yaml`: Cấu hình cho phân loại
-- `data_config.yaml`: Cấu hình xử lý dữ liệu
+### 3. Analysis & Visualization
+- **`analyze_processed_data.py`**: Phân tích dữ liệu đã processed
+  - Task 1 và Task 2 data analysis
+  - Length distributions, embeddings analysis
+  - Automated report generation
 
-### 6. Scripts (`scripts/`)
-- `run_spoiler_generation.py`: Chạy thí nghiệm tạo spoiler
-- `run_spoiler_classification.py`: Chạy thí nghiệm phân loại
-- `evaluate_models.py`: Đánh giá các mô hình
+- **`create_advanced_visualizations.py`**: Tạo visualizations toàn diện
+  - Task-specific analysis charts
+  - PCA/t-SNE embeddings visualization
+  - Comprehensive comparison plots
 
-### 7. Notebooks (`notebooks/`)
-- `01_data_exploration.ipynb`: Khám phá dữ liệu
-- `02_spoiler_generation_experiments.ipynb`: Thí nghiệm tạo spoiler
-- `03_spoiler_classification_experiments.ipynb`: Thí nghiệm phân loại
-- `04_results_analysis.ipynb`: Phân tích kết quả 
+### 4. System Management
+- **`check_system_readiness.py`**: Kiểm tra system cho training
+  - CUDA availability và GPU memory
+  - Dependencies validation
+  - Training time estimation
+  - Directory structure verification
+
+## Workflow đề xuất
+
+1. **Setup**: `check_system_readiness.py`
+2. **Data Cleaning**: `clean_unicode_auto.py`
+3. **Preprocessing**: `preprocess_data.py`
+4. **Analysis**: `analyze_processed_data.py`
+5. **Visualization**: `create_advanced_visualizations.py`
+6. **Training**: `train_classifier.py`
+7. **Evaluation**: `evaluate_classification.py` 

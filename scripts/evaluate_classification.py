@@ -302,27 +302,26 @@ class ClassificationEvaluator:
         
         return report
     
-    def create_error_analysis(self, best_model_name, all_results, test_df):
+    def create_error_analysis(self, best_model_name, all_results, test_df, y_true):
         """Analyze prediction errors"""
         logger.info("🔍 Creating error analysis...")
         
         best_results = all_results[best_model_name]
-        y_true = best_results['predictions']  # This should be from y_true, fixing this
         y_pred = best_results['predictions']
         
         # Find misclassified samples
         errors = test_df.copy()
         errors['predicted'] = y_pred
-        errors['true_label'] = [self.class_names[i] for i in range(len(test_df))]  # Fix this
-        errors['predicted_label'] = [self.class_names[i] for i in y_pred]
+        errors['true_label'] = [self.class_names[label] for label in y_true]
+        errors['predicted_label'] = [self.class_names[pred] for pred in y_pred]
         
         # Get only errors
-        error_mask = y_true != y_pred  # This needs to be fixed
+        error_mask = y_true != y_pred
         error_samples = errors[error_mask]
         
         if len(error_samples) > 0:
             # Save error samples for manual inspection
-            error_samples[['spoiler_type', 'predicted_label', 'post_length', 'spoiler_length']].to_csv(
+            error_samples[['spoiler_type', 'predicted_label', 'true_label', 'post_length', 'spoiler_length']].to_csv(
                 self.results_dir / "error_analysis.csv", index=False
             )
             
@@ -368,7 +367,7 @@ class ClassificationEvaluator:
             
             # Error analysis
             best_model_name = report['best_model']
-            self.create_error_analysis(best_model_name, all_results, test_df)
+            self.create_error_analysis(best_model_name, all_results, test_df, y_true)
             
             # Summary
             logger.info("\n" + "=" * 60)
